@@ -1,7 +1,43 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+body, html {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: pink;
+}
+#message {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<h2 id="message"></h2>
+
+<script>
+const messages = [
+  "Love you, Ariel",
+  "You're my favorite boyfriend",
+  "Michael loves you <3",
+  "You darling man",
+  "You're adorable",
+  "Why are you so wonderful?",
+  "You have beautiful eyes",
+  "Hey beautiful man. You should break up with her, so you can be with me",
+  "Man, I wish you were gay",
+  "Will you be the Luigi to my Mario?",
+  "Star light star bright. I wish I may. I wish I might. That you'd be gay tonight"
+];
+const random = Math.floor(Math.random() * messages.length);
+document.getElementById('message').innerHTML = messages[random];
+</script>
+
 </body>
 </html>
