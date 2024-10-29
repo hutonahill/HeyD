@@ -61,16 +61,24 @@
         "I love men. Specifically, the ones that love music, a girl named McKenzie, and the clarinet."
     ];
 
-    const random = Math.floor(Math.random() * messages.length);
-    document.getElementById('message').innerHTML = messages[random];
-
     const video = document.getElementById('myVideo');
     const autoplayPrompt = document.getElementById('autoplayPrompt');
+    
+    // Function to check autoplay permissions
+    const checkAutoplayPermission = async () => {
+        try {
+            await video.play();
+            // If the video plays, permissions are granted
+            const random = Math.floor(Math.random() * messages.length);
+            document.getElementById('message').innerHTML = messages[random];
+        } catch (error) {
+            // Show the autoplay prompt if the video fails to play
+            autoplayPrompt.style.display = 'block';
+        }
+    };
 
-    video.play().catch(() => {
-        // Show the autoplay prompt if the video fails to play
-        autoplayPrompt.style.display = 'block';
-    });
+    // Check autoplay permissions when the page loads
+    document.addEventListener('DOMContentLoaded', checkAutoplayPermission);
 </script>
 
 </body>
