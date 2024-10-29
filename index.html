@@ -1,56 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-body, html {
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  background-color: pink;
-}
-#message {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-</style>
+    <style>
+        body, html {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: pink;
+        }
+        #message {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #autoplayPrompt {
+            display: none;
+            margin-top: 20px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
 <h2 id="message"></h2>
+<video id="myVideo" width="640" height="360" loop muted>
+    <source src="https://cdn.discordapp.com/attachments/412373201063247873/705637793392754758/friday.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<div id="autoplayPrompt">Please enable autoplay in your browser settings to play the video automatically.</div>
 
 <script>
-const messages = [
-  "Love you, Ariel",
-  "You're my favorite boyfriend",
-  "Michael loves you <3",
-  "You darling man",
-  "You're adorable",
-  "Why are you so wonderful?",
-  "You have beautiful eyes",
-  "Hey, beautiful man. You should break up with her, so you can be with me",
-  "Man, I wish you were gay",
-  "Will you be the Luigi to my Mario?",
-  "Star light star bright. I wish I may. I wish I might. That you'd be gay tonight",
-  "I am cheating",
-  "My social security number is 451-58-6711",
-  "Top 10 Hottest men, number 1, Ariel.",
-  "Gay really means happy, so I guess I’m super homosexual for you.",
-  "Man I wish I wasn’t so attracted to men who play the clarinet.",
-  "If you were among us I would be sus for you.",
-  "Will you be the, I do, to my BYU?",
-  "You’re so hot I’m just gay for you straight up.",
-  "Have you mewed today? <img src='https://media.tenor.com/R9E4h1vKHr8AAAAe/mewing-mew.png'>",
-  "What date is it? Me. You. Eating ice cream. Kissing.",
-  "How are you? Let’s just skip to the end.. will you marry me?",
-  "How many hot men does it take to make me happy? Just Ariel.",
-  "Hot men are like oranges, once you get to know them, they’re so very sweet and tart.",
-  "I love men. Specifically, the ones that love music, a girl named McKenzie, and the clarinet."
-];
-const random = Math.floor(Math.random() * messages.length);
-document.getElementById('message').innerHTML = messages[random];
+    const messages = [
+        "Love you, Ariel",
+        "You're my favorite boyfriend",
+        "Michael loves you <3",
+        "You darling man",
+        "You're adorable",
+        "Why are you so wonderful?",
+        "You have beautiful eyes",
+        "Hey, beautiful man. You should break up with her, so you can be with me",
+        "Man, I wish you were gay",
+        "Will you be the Luigi to my Mario?",
+        "Star light star bright. I wish I may. I wish I might. That you'd be gay tonight",
+        "I am cheating",
+        "My social security number is 451-58-6711",
+        "Top 10 Hottest men, number 1, Ariel.",
+        "Gay really means happy, so I guess I’m super homosexual for you.",
+        "Man I wish I wasn’t so attracted to men who play the clarinet.",
+        "If you were among us I would be sus for you.",
+        "Will you be the, I do, to my BYU?",
+        "You’re so hot I’m just gay for you straight up.",
+        "Have you mewed today? <img src='https://media.tenor.com/R9E4h1vKHr8AAAAe/mewing-mew.png'>",
+        "What date is it? Me. You. Eating ice cream. Kissing.",
+        "How are you? Let’s just skip to the end.. will you marry me?",
+        "How many hot men does it take to make me happy? Just Ariel.",
+        "Hot men are like oranges, once you get to know them, they’re so very sweet and tart.",
+        "I love men. Specifically, the ones that love music, a girl named McKenzie, and the clarinet."
+    ];
+
+    const random = Math.floor(Math.random() * messages.length);
+    document.getElementById('message').innerHTML = messages[random];
+
+    const video = document.getElementById('myVideo');
+    const autoplayPrompt = document.getElementById('autoplayPrompt');
+
+    video.play().catch(() => {
+        // Show the autoplay prompt if the video fails to play
+        autoplayPrompt.style.display = 'block';
+    });
 </script>
 
 </body>
